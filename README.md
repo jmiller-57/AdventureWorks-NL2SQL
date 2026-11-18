@@ -1,3 +1,22 @@
+# AdventureWorks NL→SQL
+
+Ask a plain-English question about the AdventureWorks database and have Claude write the SQL that answers it.
+
+## How it works
+question → Claude (with the schema, columns, and foreign keys as context) → SQL → safety checks → PostgreSQL (read-only user) → results
+
+## Status
+- ✅ PostgreSQL + AdventureWorks running in Docker
+- ✅ Schema and foreign keys exported to JSON as model context (`nl2sql/adventureworks_schema.json`)
+- ✅ Python client for Claude on AWS Bedrock (`nl2sql/bedrock_check.py`)
+- ⬜ Read-only database role
+- ⬜ End-to-end: question → SQL → validation → results
+- ⬜ Evaluation set with a pass rate
+
+---
+
+*Database setup below is from [lorint/AdventureWorks-for-Postgres](https://github.com/lorint/AdventureWorks-for-Postgres) (MIT).*
+
 # AdventureWorks for Postgres
 
 This project provides the scripts necessary to set up the OLTP part of the go-to database used in
